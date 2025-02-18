@@ -175,7 +175,7 @@ public class Console {
                     int id13 = sc.nextInt();
                     System.out.println("Sortieren 1.aufsteigend/2.absteigend");
                     int mode = sc.nextInt();
-                   // controller.print(id13,mode);
+                    controller.print(id13,mode);
                     break;
                 case 14:
                     continueloop = false;

@@ -111,7 +111,7 @@ public class Controller {
     }
 
     public void filterRegion(String region){
-        charaktereRepository.getAllItems().stream().filter(p -> p.getRegion().equals(region)).forEach(p-> System.out.println(p.getName()));\
+        charaktereRepository.getAllItems().stream().filter(p -> p.getRegion().equals(region)).forEach(p-> System.out.println(p.getName()));
 
     }
 
@@ -131,34 +131,34 @@ public class Controller {
         }
     }
 
-//    /**
-//     * Prints the list of items for a given entity, sorted by a specified attribute.
-//     * <p>
-//     * The method retrieves all entities and filters by the given ID. Depending on the specified mode,
-//     * it will print the items either in ascending or descending order of the specified attribute.
-//     *
-//     * @param id the ID of the entity whose items will be printed.
-//     * @param modus the sorting mode (1 for ascending order, 2 for descending order).
-//     */
-//    public void print(int id, int modus) {
-//
-//        ArrayList<Charaktere> all = charaktereRepository.getAllItems();
-//
-//        for (Charaktere entry : all) {
-//            if (entry.getId() == id) {
-//                if (modus == 1)
-//                {
-//                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice)).forEach(System.out::println);
-//                }
-//                else if (modus == 2){
-//                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice).reversed()).forEach(System.out::println);
-//                }
-//
-//            }
-//        }
-//
-//
-//    }
+    /**
+     * Prints the list of items for a given entity, sorted by a specified attribute.
+     * <p>
+     * The method retrieves all entities and filters by the given ID. Depending on the specified mode,
+     * it will print the items either in ascending or descending order of the specified attribute.
+     *
+     * @param id the ID of the entity whose items will be printed.
+     * @param modus the sorting mode (1 for ascending order, 2 for descending order).
+     */
+    public void print(int id, int modus) {
+
+        ArrayList<Charakter> all = charaktereRepository.getAllItems();
+
+        for (Charakter entry : all) {
+            if (entry.getId() == id) {
+                if (modus == 1)
+                {
+                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice)).forEach(System.out::println);
+                }
+                else if (modus == 2){
+                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice).reversed()).forEach(System.out::println);
+                }
+
+            }
+        }
+
+
+    }
 //
 //    public void add(){
 //        Produkt p1 = new Produkt("masa", 12, "Cluj");
