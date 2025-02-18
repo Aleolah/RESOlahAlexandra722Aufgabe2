@@ -41,9 +41,9 @@ public class Console {
         System.out.println("9. Ein Charakter anzeigen");
         System.out.println("10. Alle Charaktere anzeigen");
 
-        System.out.println("11. Charaktere nach Ort filtern");
-        System.out.println("12. Charaktere nach Region des Produkts filtern");
-        System.out.println("13. Produkte einer Charakter sortieren ");
+        System.out.println("11. Charaktere nach Region filtern");
+        System.out.println("12. Charaktere nach Universum des Produkts filtern");
+        System.out.println("13. Produkte einer Charakter sortieren nach Preis ");
         System.out.println("14. Exit");
 
     }
@@ -166,9 +166,9 @@ public class Console {
                     controller.filterRegion(region11);
                     break;
                 case 12:
-                    System.out.println("Gebe Region");
-                    String region12 = sc.next();
-                   // controller.filterCharaktere(region12);
+                    System.out.println("Gebe Universum");
+                    String universum12 = sc.next();
+                    controller.filterCharaktere(universum12);
                     break;
                 case 13:
                     System.out.println("Geben sie ein Charakter Id");

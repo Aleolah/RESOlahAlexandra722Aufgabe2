@@ -114,18 +114,23 @@ public class Controller {
         charaktereRepository.getAllItems().stream().filter(p -> p.getRegion().equals(region)).forEach(p-> System.out.println(p.getName()));\
 
     }
-//
-//    public void filterCharaktere(String region){
-//        ArrayList<Charaktere> all = charaktereRepository.getAllItems();
-//        for (Charaktere entry : all){
-//            long counted = 0;
-//            counted = entry.getProdukte().stream().filter(p->p.getHerRegion().equals(region)).count();
-//            if (counted != 0){
-//                System.out.println(entry);
-//            }
-//        }
-//    }
-//
+
+    public void filterCharaktere(String universum){
+        ArrayList<Charakter> all = charaktereRepository.getAllItems();
+        ArrayList<Charakter> filtered = new ArrayList<>();
+        for (Charakter entry : all){
+            long counted = 0;
+            counted = entry.getProdukte().stream().filter(p->p.getUniversum().equals(universum)).count();
+            if (counted != 0){
+                filtered.add(entry);
+            }
+        }
+        filtered.sort(Comparator.comparing(Charakter::getName));
+        for ( Charakter entry : filtered){
+            System.out.println(entry);
+        }
+    }
+
 //    /**
 //     * Prints the list of items for a given entity, sorted by a specified attribute.
 //     * <p>
