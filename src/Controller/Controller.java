@@ -111,7 +111,8 @@ public class Controller {
     }
 
     public void filterRegion(String region){
-        charaktereRepository.getAllItems().stream().filter(p -> p.getRegion().equals(region)).forEach(p-> System.out.println(p.getName()));
+        charaktereRepository.getAllItems().stream().filter(p -> p.getRegion().equals(region)).forEach(p-> System.out.println(p.getName()));\
+
     }
 //
 //    public void filterCharaktere(String region){
