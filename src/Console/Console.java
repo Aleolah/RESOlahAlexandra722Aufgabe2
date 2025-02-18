@@ -65,7 +65,7 @@ public class Console {
                     String name = sc.next();
                     System.out.println("Geben sie ein Preis:");
                     double preis = sc.nextInt();
-                    System.out.println("Geben sie ein universum:");
+                    System.out.println("Geben sie ein Universum:");
                     String universum = sc.next();
                     controller.addProdukt(name, preis, universum);
                     break;
@@ -81,8 +81,8 @@ public class Console {
                     System.out.println("Geben sie ein Preis:");
                     double preis2 = sc.nextInt();
                     System.out.println("Geben sie ein Universum:");
-                    String region2 = sc.next();
-                    controller.updateProdukt(oldName,name2,preis2,region2);
+                    String uni2 = sc.next();
+                    controller.updateProdukt(oldName,name2,preis2,uni2);
                     break;
                 case 4:
                     System.out.println("Geben sie ein Name:");
@@ -103,9 +103,9 @@ public class Console {
                     System.out.println("Geben sie ein Namen:");
                     String name6 = sc.next();
                     System.out.println("Geben sie ein Region:");
-                    String diagnose6 = sc.next();
+                    String region6 = sc.next();
 
-                    ArrayList<Produkt> list = new ArrayList<>();
+                    ArrayList<Produkt> list6 = new ArrayList<>();
                     System.out.println("Geben sie eine Liste von Produkte namen");
                     sc.nextLine();
                     while(true){
@@ -114,10 +114,10 @@ public class Console {
                             break;
                         }
                         Optional<Produkt> optionalMed = controller.getProduktByName(entry);
-                        optionalMed.ifPresent(list::add);
+                        optionalMed.ifPresent(list6::add);
 
                     }
-                    controller.addCharaktere(id6,name6,diagnose6,list);
+                    controller.addCharaktere(id6,name6,region6,list6);
                     break;
                 case 7:
                     System.out.println("Geben sie ein id:");
