@@ -110,9 +110,9 @@ public class Controller {
         return charaktereRepository.findItem(charaktere -> charaktere.getId() == id);
     }
 
-//    public void filterOrt(String ort){
-//        charaktereRepository.getAllItems().stream().filter(p -> p.getHerOrt().equals(ort)).forEach(System.out::println);
-//    }
+    public void filterRegion(String region){
+        charaktereRepository.getAllItems().stream().filter(p -> p.getRegion().equals(region)).forEach(p-> System.out.println(p.getName()));
+    }
 //
 //    public void filterCharaktere(String region){
 //        ArrayList<Charaktere> all = charaktereRepository.getAllItems();

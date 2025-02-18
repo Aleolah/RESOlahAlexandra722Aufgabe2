@@ -161,9 +161,9 @@ public class Console {
                     controller.displayCharaktere();
                     break;
                 case 11:
-                    System.out.println("Gib Ort");
-                    String ort11 = sc.next();
-                   // controller.filterOrt(ort11);
+                    System.out.println("Gib Region");
+                    String region11 = sc.next();
+                    controller.filterRegion(region11);
                     break;
                 case 12:
                     System.out.println("Gebe Region");
