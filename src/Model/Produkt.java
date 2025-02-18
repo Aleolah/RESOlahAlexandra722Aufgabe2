@@ -2,10 +2,10 @@ package Model;
 
 public class Produkt {
     private String name;
-    private int price;
+    private double price;
     private String universum;
 
-    public Produkt(String name, int price, String universum) {
+    public Produkt(String name, double price, String universum) {
         this.name = name;
         this.price = price;
         this.universum = universum;
@@ -36,7 +36,7 @@ public class Produkt {
         return name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

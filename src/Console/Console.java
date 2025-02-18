@@ -53,7 +53,7 @@ public class Console {
      * The user can interact with the application to perform the available actions.
      */
     public void run() {
-        //controller.add();
+        controller.add();
         Scanner sc = new Scanner(System.in);
         boolean continueloop = true;
         while (continueloop) {
@@ -64,7 +64,7 @@ public class Console {
                     System.out.println("Geben sie ein Name:");
                     String name = sc.next();
                     System.out.println("Geben sie ein Preis:");
-                    int preis = sc.nextInt();
+                    double preis = sc.nextInt();
                     System.out.println("Geben sie ein universum:");
                     String universum = sc.next();
                     controller.addProdukt(name, preis, universum);
@@ -79,7 +79,7 @@ public class Console {
                     System.out.println("Geben sie ein Name:");
                     String name2 = sc.next();
                     System.out.println("Geben sie ein Preis:");
-                    int preis2 = sc.nextInt();
+                    double preis2 = sc.nextInt();
                     System.out.println("Geben sie ein Universum:");
                     String region2 = sc.next();
                     controller.updateProdukt(oldName,name2,preis2,region2);
@@ -171,11 +171,11 @@ public class Console {
                     controller.filterCharaktere(universum12);
                     break;
                 case 13:
-                    System.out.println("Geben sie ein Charakter Id");
-                    int id13 = sc.nextInt();
+                    System.out.println("Geben sie ein Charakter Name");
+                    String name13 = sc.next();
                     System.out.println("Sortieren 1.aufsteigend/2.absteigend");
                     int mode = sc.nextInt();
-                    controller.print(id13,mode);
+                    controller.print(name13,mode);
                     break;
                 case 14:
                     continueloop = false;

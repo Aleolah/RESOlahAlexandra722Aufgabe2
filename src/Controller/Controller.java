@@ -4,9 +4,13 @@ package Controller;
 import Model.*;
 import Repository.Repository;
 
+
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+
+
 
 /**
  * The `Controller` class is the central component of the application's logic.
@@ -26,7 +30,7 @@ public class Controller {
     /**
      * Adds a new item.
      */
-    public void addProdukt(String name, int price, String universum){
+    public void addProdukt(String name, double price, String universum){
         Produkt p = new Produkt(name, price, universum);
         produktRepository.addItem(p);
 
@@ -42,7 +46,7 @@ public class Controller {
     /**
      * Updates an item
      */
-    public void updateProdukt(String oldName, String name, int price, String universum){
+    public void updateProdukt(String oldName, String name, double price, String universum){
         produktRepository.updateItem(p -> p.getName().equals(oldName),new Produkt(name, price, universum));
     }
 
@@ -127,7 +131,7 @@ public class Controller {
         }
         filtered.sort(Comparator.comparing(Charakter::getName));
         for ( Charakter entry : filtered){
-            System.out.println(entry);
+            System.out.println(entry.getName());
         }
     }
 
@@ -137,21 +141,21 @@ public class Controller {
      * The method retrieves all entities and filters by the given ID. Depending on the specified mode,
      * it will print the items either in ascending or descending order of the specified attribute.
      *
-     * @param id the ID of the entity whose items will be printed.
+     * @param name the name of the entity whose items will be printed.
      * @param modus the sorting mode (1 for ascending order, 2 for descending order).
      */
-    public void print(int id, int modus) {
+    public void print(String name, int modus) {
 
         ArrayList<Charakter> all = charaktereRepository.getAllItems();
 
         for (Charakter entry : all) {
-            if (entry.getId() == id) {
+            if (entry.getName().equals(name)) {
                 if (modus == 1)
                 {
-                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice)).forEach(System.out::println);
+                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice)).forEach(p->System.out.println(p.getName() + "-" + p.getPrice()));
                 }
                 else if (modus == 2){
-                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice).reversed()).forEach(System.out::println);
+                    entry.getProdukte().stream().sorted(Comparator.comparing(Produkt::getPrice).reversed()).forEach(p->System.out.println(p.getName() + "-" + p.getPrice()));
                 }
 
             }
@@ -159,37 +163,77 @@ public class Controller {
 
 
     }
-//
-//    public void add(){
-//        Produkt p1 = new Produkt("masa", 12, "Cluj");
-//        Produkt p2 = new Produkt("dulap", 80, "Cluj");
-//        Produkt p3 = new Produkt("vaza", 3, "Timisoara");
-//        Produkt p4 = new Produkt("carte", 25, "Bucuresti");
-//        Produkt p5 = new Produkt("scaun", 45, "Cluj");
-//        Produkt p6 = new Produkt("lampa", 15, "Iasi");
-//        ArrayList<Produkt> produkts = new ArrayList<>();
-//        produkts.add(p1);
-//        produkts.add(p2);
-//        produkts.add(p3);
-//        ArrayList<Produkt> produkts2 = new ArrayList<>();
-//        produkts2.add(p4);
-//        produkts2.add(p1);
-//
-//        Charaktere c1 = new Charaktere(1,"Ana","Romania",produkts);
-//        Charaktere c2 = new Charaktere(2,"Maia","Romania",produkts2);
-//        Charaktere c3 = new Charaktere(3,"Mia","Olanda",produkts);
-//        produktRepository.addItem(p1);
-//        produktRepository.addItem(p2);
-//        produktRepository.addItem(p3);
-//        produktRepository.addItem(p4);
-//        produktRepository.addItem(p5);
-//        produktRepository.addItem(p6);
-//
-//        charaktereRepository.addItem(c1);
-//        charaktereRepository.addItem(c2);
-//        charaktereRepository.addItem(c3);
-//
-//    }
+
+    public void add(){
+        // Initialisierung der Produkte
+        List<Produkt> produkte = new ArrayList<>();
+        produkte.add(new Produkt("Mjolnir", 500.0, "Asgard"));
+        produkte.add(new Produkt("Vibranium-Schild", 700.0, "Wakanda"));
+        produkte.add(new Produkt("Infinity Gauntlet", 10000.0, "Titan"));
+        produkte.add(new Produkt("Web-Shooter", 250.0, "Terra"));
+        produkte.add(new Produkt("Arc-Reaktor", 1500.0, "Terra"));
+        produkte.add(new Produkt("Norn Stones", 1200.0, "Asgard"));
+        produkte.add(new Produkt("Quantum Suit", 3000.0, "Terra"));
+        produkte.add(new Produkt("X-Gene Serum", 850.0, "X-Mansion"));
+        produkte.add(new Produkt("Cosmic Cube", 9000.0, "Multiverse"));
+        produkte.add(new Produkt("Darkhold", 2000.0, "Multiverse"));
+
+        produktRepository.addItem(produkte.get(0));
+        produktRepository.addItem(produkte.get(1));
+        produktRepository.addItem(produkte.get(2));
+        produktRepository.addItem(produkte.get(3));
+        produktRepository.addItem(produkte.get(4));
+        produktRepository.addItem(produkte.get(5));
+        produktRepository.addItem(produkte.get(6));
+        produktRepository.addItem(produkte.get(7));
+        produktRepository.addItem(produkte.get(8));
+        produktRepository.addItem(produkte.get(9));
+
+        // Initialisierung der Charaktere
+        List<Charakter> charaktere = new ArrayList<>();
+
+
+        List<Produkt> produkte1 = new ArrayList<>();
+        produkte1.add(produkte.get(0)); // Mjolnir
+        produkte1.add(produkte.get(5)); // Norn Stones
+        produkte1.add(produkte.get(9)); // Darkhold
+        Charakter c1 = new Charakter(1, "Thor", "Asgard", produkte1);
+
+        List<Produkt> produkte2 = new ArrayList<>();
+        produkte2.add(produkte.get(1)); // Vibranium-Schild
+        produkte2.add(produkte.get(7)); // X-Gene Serum
+        Charakter c2 = new Charakter(2, "Black Panther", "Wakanda", produkte2);
+
+        List<Produkt> produkte3 = new ArrayList<>();
+        produkte3.add(produkte.get(4)); // Arc-Reaktor
+        produkte3.add(produkte.get(6)); // Quantum Suit
+        produkte3.add(produkte.get(3)); // Web-Shooter
+        Charakter c3 = new Charakter(3, "Iron Man", "Terra",produkte3);
+
+        List<Produkt> produkte4 = new ArrayList<>();
+        produkte4.add(produkte.get(3)); // Web-Shooter
+        produkte4.add(produkte.get(8)); // Cosmic Cube
+        Charakter c4 = new Charakter(4, "Spider-Man", "Terra",produkte4);
+
+        List<Produkt> produkte5 = new ArrayList<>();
+        produkte5.add(produkte.get(9)); // Darkhold
+        produkte5.add(produkte.get(8)); // Cosmic Cube
+        produkte5.add(produkte.get(2)); // Infinity Gauntlet
+        Charakter c5 = new Charakter(5, "Doctor Strange", "Multiverse",produkte5);
+
+        charaktere.add(c1);
+        charaktere.add(c2);
+        charaktere.add(c3);
+        charaktere.add(c4);
+        charaktere.add(c5);
+
+        charaktereRepository.addItem(c1);
+        charaktereRepository.addItem(c2);
+        charaktereRepository.addItem(c3);
+        charaktereRepository.addItem(c4);
+        charaktereRepository.addItem(c5);
+
+    }
 
 
 
